@@ -35,13 +35,17 @@ def validate_image(img: Image.Image) -> None:
         raise ValueError("Imagem com dimensões inválidas (largura ou altura = 0).")
 
 
-def encode_image_base64(img: Image.Image) -> str:
-    """Converte PIL Image para string base64 (JPEG), pronto para envio à API."""
-    # redimensiona se necessário para não estourar o limite da API
+def encode_image_bytes(img: Image.Image) -> bytes:
+    """Converte PIL Image para bytes JPEG, redimensionando se necessário."""
     img = _resize_if_needed(img)
     buffer = io.BytesIO()
     img.convert("RGB").save(buffer, format="JPEG")
-    return base64.b64encode(buffer.getvalue()).decode("utf-8")
+    return buffer.getvalue()
+
+
+def encode_image_base64(img: Image.Image) -> str:
+    """Converte PIL Image para string base64 (JPEG), pronto para envio à API."""
+    return base64.b64encode(encode_image_bytes(img)).decode("utf-8")
 
 
 def _resize_if_needed(img: Image.Image) -> Image.Image:

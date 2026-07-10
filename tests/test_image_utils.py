@@ -3,7 +3,7 @@ import base64
 import pytest
 from PIL import Image
 
-from src.image_utils import encode_image_base64, load_image, validate_image
+from src.image_utils import encode_image_base64, encode_image_bytes, load_image, validate_image
 
 
 # --- helpers -----------------------------------------------------------------
@@ -98,3 +98,18 @@ class TestEncodeImageBase64:
         img = Image.new("RGBA", (100, 100), color=(0, 0, 255, 128))
         result = encode_image_base64(img)
         assert isinstance(result, str)
+
+
+# --- encode_image_bytes -------------------------------------------------------
+
+class TestEncodeImageBytes:
+    def test_retorna_bytes_jpeg(self):
+        img = Image.new("RGB", (100, 100), color=(0, 255, 0))
+        result = encode_image_bytes(img)
+        assert isinstance(result, bytes)
+        assert result[:2] == b"\xff\xd8"  # magic bytes de JPEG
+
+    def test_imagem_grande_e_redimensionada(self):
+        img = Image.new("RGB", (4000, 3000))
+        encode_image_bytes(img)
+        assert max(img.size) <= 2048

@@ -45,10 +45,11 @@ class GeminiClient:
             ),
         )
 
-    def transcribe_menu(self, image_bytes: bytes) -> str:
+    def transcribe_menu(self, image_bytes: bytes, prompt_override: str = None) -> str:
         """Envia imagem para o Gemini e retorna texto com tabela Produto | Preço."""
         from google.api_core import exceptions as google_exceptions
 
+        prompt = prompt_override or SYSTEM_PROMPT
         image_part = {
             "inline_data": {
                 "mime_type": "image/jpeg",
@@ -57,7 +58,7 @@ class GeminiClient:
         }
 
         try:
-            response = self._model.generate_content([SYSTEM_PROMPT, image_part])
+            response = self._model.generate_content([prompt, image_part])
         except google_exceptions.ResourceExhausted:
             raise RuntimeError("Rate limit atingido. Aguarde alguns segundos e tente novamente.")
         except google_exceptions.DeadlineExceeded:

@@ -33,7 +33,7 @@ class GeminiClient:
 
         genai.configure(api_key=api_key)
 
-        model_name = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
+        model_name = os.getenv("GEMINI_MODEL", "gemini-flash-latest")
         temperature = float(os.getenv("GEMINI_TEMPERATURE", "0.1"))
         max_tokens = int(os.getenv("GEMINI_MAX_TOKENS", "1024"))
 

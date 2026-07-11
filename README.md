@@ -46,7 +46,7 @@ menu photo
       ↓
  Gemini API (multimodal prompt)           → src/llm_client.py
       ↓
- parser → {Produto, Preço} structure       → src/parser.py
+ parser → {Product, Price} structure       → src/parser.py
       ↓
  guardrails (validation, retry)           → src/guardrails.py
       ↓
@@ -113,11 +113,8 @@ messages, and the transcribed output (product names and prices) — is in
 **Portuguese (pt-BR)**, including code comments and docstrings throughout
 `src/`.
 
-This is an intentional decision, not an inconsistency: the project is the
-deliverable for a Brazilian academic bootcamp, evaluated by a
-Portuguese-speaking professor, and built to transcribe real Brazilian
-restaurant menus written in Portuguese. Translating the application layer
-itself would add no value for its actual audience.
+This is an intentional decision: the project is the deliverable for a
+Brazilian academic activity, and a POC focused on Brazilian restaurants.
 
 ---
 

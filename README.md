@@ -96,6 +96,10 @@ python main.py
 Open `http://localhost:7860`, upload a menu photo, and click **Transcrever
 Cardápio**.
 
+### Screenshot
+
+![Menu Transcription POC — Gradio UI showing a menu photo transcribed into a structured product/price table](assets/app-screenshot.png)
+
 ### Notebook deliverable
 
 `notebooks/desafio_final.ipynb` walks through every pipeline stage with

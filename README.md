@@ -137,7 +137,6 @@ Brazilian academic activity, and a POC focused on Brazilian restaurants.
 ## Author
 
 Vinícius Wenz dos Santos
-*Projetista em IA Generativa* Bootcamp — XP Educação
 [LinkedIn](https://www.linkedin.com/in/vinicius-wenz-dos-santos/) · [GitHub](https://github.com/viniwenz)
 
 ## License
